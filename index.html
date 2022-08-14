@@ -1,0 +1,76 @@
+<html lang="en" >
+
+<head>
+  <meta charset="UTF-8">
+  <title>Greedy and A star Algorithm in     Romania - Javascript</title>
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.2.0/dist/leaflet.css">
+  <link rel="stylesheet" href="https://unpkg.com/leaflet.pm@latest/dist/leaflet.pm.css">
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css">
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+
+<body>
+
+  <div id="map"></div>
+ 
+
+  <script>
+
+function op() {
+  var sec='<div class="op"><div class="leaflet-control-zoom leaflet-bar leaflet-control"><select id="soflow">    	<option class="0"></option>  	<option class="1"></option>  	<option class="2"></option>  	<option class="3"></option>  	<option class="4"></option>  	<option class="5"></option>  	<option class="6"></option>  	<option class="7"></option>  	<option class="8"></option>  	<option class="9"></option>  	<option class="10"></option>  	<option class="11"></option>  	<option class="12"></option>  	<option class="13"></option>  	<option class="14"></option>  	<option class="15"></option>  	<option class="16"></option>  	<option class="17"></option>  	<option class="18"></option>  	<option class="19"></option>  <option class="20"></option> <option class="21"></option> <option class="22"></option> <option class="23"></option> <option class="24"></option> <option class="25"></option> <option class="26"></option> <option class="27"></option> <option class="28"></option> <option class="29"></option> <option class="30"></option> <option class="31"></option> <option class="32"></option> <option class="33"></option> <option class="34"></option> <option class="35"></option> <option class="36"></option> <option class="37"></option> <option class="38"></option> <option class="39"></option> <option class="40"></option> <option class="41"></option> <option class="42"></option> <option class="43"></option> <option class="44"></option> <option class="45"></option> <option class="46"></option> <option class="47"></option> <option class="48"></option> <option class="49"></option> <option class="50"></option> <option class="51"></option> <option class="52"></option> <option class="53"></option> <option class="54"></option> <option class="55"></option> <option class="56"></option> <option class="57"></option> <option class="58"></option> <option class="59"></option></select></div>';
+
+
+  var sec2='<div class="leaflet-control-zoom leaflet-bar leaflet-control"><select id="soflow2">    	<option class="0"></option>  	<option class="1"></option>  	<option class="2"></option>  	<option class="3"></option>  	<option class="4"></option>  	<option class="5"></option>  	<option class="6"></option>  	<option class="7"></option>  	<option class="8"></option>  	<option class="9"></option>  	<option class="10"></option>  	<option class="11"></option>  	<option class="12"></option>  	<option class="13"></option>  	<option class="14"></option>  	<option class="15"></option>  	<option class="16"></option>  	<option class="17"></option>  	<option class="18"></option>  	<option class="19">   <option class="20"></option> <option class="21"></option> <option class="22"></option> <option class="23"></option> <option class="24"></option> <option class="25"></option> <option class="26"></option> <option class="27"></option> <option class="28"></option> <option class="29"></option> <option class="30"></option> <option class="31"></option> <option class="32"></option> <option class="33"></option> <option class="34"></option> <option class="35"></option> <option class="36"></option> <option class="37"></option> <option class="38"></option> <option class="39"></option> <option class="40"></option> <option class="41"></option> <option class="42"></option> <option class="43"></option> <option class="44"></option> <option class="45"></option> <option class="46"></option> <option class="47"></option> <option class="48"></option> <option class="49"></option> <option class="50"></option> <option class="51"></option> <option class="52"></option> <option class="53"></option> <option class="54"></option> <option class="55"></option> <option class="56"></option> <option class="57"></option> <option class="58"></option> <option class="59"></option></select> <br> <select id="algoritma"><option class="0">Algoritmayı Seciniz.</option> <option class="1">Greddy Best First Search,0</option>    <option class="2">AStar,1</option></select></div></div>';
+  document.querySelectorAll(".leaflet-bottom.leaflet-left")["0"].innerHTML=sec+""+sec2;
+
+  for(var n in isimler){
+  	document.querySelectorAll("#soflow")["0"][n].innerText=isimler[n]+","+n;
+  	document.querySelectorAll("#soflow2")["0"][n].innerText=isimler[n]+","+n;
+  }
+
+
+
+  $('#soflow').on('change', function (e) {
+        var optionSelected = $("option:selected", this);
+        valueSelected = this.value;
+    //alert(valueSelected)
+    var index=valueSelected.split(",");
+    bas=index[1];
+  });
+
+      $('#soflow2').on('change', function (e) {
+        var optionSelected = $("option:selected", this);
+        valueSelected = this.value;
+    //alert(valueSelected)
+    var index=valueSelected.split(",");
+    son=index[1];
+    //ciz(bas,son);
+  });
+
+      alg=0;
+  $('#algoritma').on('change', function (e) {
+    var optionSelected = $("option:selected", this);
+    valueSelected = this.value;
+    //alert(valueSelected)
+    var index=valueSelected.split(",");
+    alg=index[1];
+
+    if(alg==0){
+      ciz2(bas,son);
+    }
+    if(alg==1){
+      ciz(bas,son);
+    }
+
+  });
+}
+    window.onload=op;
+  </script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
+  <script src="https://unpkg.com/leaflet@1.2.0/dist/leaflet.js"></script>
+  <script src="https://npmcdn.com/@turf/turf/turf.min.js"></script>
+  <script src="https://unpkg.com/leaflet.pm@latest/dist/leaflet.pm.min.js"></script>
+  <script src="js/app.js"></script>
+</body>
+</html>
